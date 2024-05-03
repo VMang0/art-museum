@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { Routes as BrowserRoutes, Route, Navigate } from 'react-router-dom';
 
-import { ContentLayout } from '@components/layout/content-layout';
+import { ContentLayout } from '@components/layout';
 import { PATH } from '@constants/path';
 import { ArtDetails } from '@pages/art-details';
 import { Favorites } from '@pages/favorites';
