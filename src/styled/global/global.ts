@@ -13,21 +13,21 @@ export const GlobalStyles = createGlobalStyle`
     font-family: 'Inter';
     font-style: normal;
     font-display: swap;
-    src: url(${InterRegular}) format('ttf');
+    src: url(${InterRegular});
     font-weight: 400;
   }
   @font-face {
     font-family: 'Inter';
     font-style: normal;
     font-display: swap;
-    src: url(${InterMedium}) format('ttf');
+    src: url(${InterMedium});
     font-weight: 500;
   }
   @font-face {
     font-family: 'Inter';
     font-style: normal;
     font-display: swap;
-    src: url(${InterBold}) format('ttf');
+    src: url(${InterBold});
     font-weight: 700;
   }
 
@@ -35,35 +35,35 @@ export const GlobalStyles = createGlobalStyle`
     font-family: 'Lexend Deca';
     font-style: normal;
     font-display: swap;
-    src: url(${LexendDecaRegular}) format('ttf');
+    src: url(${LexendDecaRegular});
     font-weight: 400;
   }
   @font-face {
     font-family: 'Lexend Deca';
     font-style: normal;
     font-display: swap;
-    src: url(${LexendDecaBold}) format('ttf');
+    src: url(${LexendDecaBold});
     font-weight: 700;
   }
   @font-face {
     font-family: 'Lexend Deca';
     font-style: normal;
     font-display: swap;
-    src: url(${LexendDecaMedium}) format('ttf');
+    src: url(${LexendDecaMedium});
     font-weight: 500;
   }
   @font-face {
     font-family: 'Lexend Deca';
     font-style: normal;
     font-display: swap;
-    src: url(${LexendDecaLight}) format('ttf');
+    src: url(${LexendDecaLight});
     font-weight: 300;
   }
   @font-face {
     font-family: 'Lexend Deca';
     font-style: normal;
     font-display: swap;
-    src: url(${LexendDecaSemiBold}) format('ttf');
+    src: url(${LexendDecaSemiBold});
     font-weight: 600;
   }
   body {
@@ -107,5 +107,11 @@ export const GlobalStyles = createGlobalStyle`
     &:hover {
       text-decoration: none;
     }
+  }
+  input[type="text"] {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    margin: 0;
   }
 `;
