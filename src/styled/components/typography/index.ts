@@ -1,1 +1,1 @@
-export { TextStyled, TitleStyled } from './typography';
+export { TextStyled, TitleStyled, ItemTextStyled, SubTitleStyled } from './typography';

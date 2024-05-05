@@ -4,6 +4,7 @@ import styled from 'styled-components';
 export const BurgerMenuStyled = styled.div<{ $menuState: boolean }>`
   top: 0;
   right: 0;
+  z-index: 100;
   position: fixed;
   transition: all 0.4s;
   width: ${({ theme }) => theme.width.fullVW};

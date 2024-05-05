@@ -1,1 +1,1 @@
-export { ContentWrapperStyled } from './content-wrapper';
+export { ContentWrapperStyled, PageWrapperStyled, SectionWrapperStyled } from './content-wrapper';
