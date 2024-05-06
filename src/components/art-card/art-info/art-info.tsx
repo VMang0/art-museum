@@ -1,9 +1,18 @@
+import { FC } from 'react';
 import { ArtInfoWrapperStyle } from '@components/art-card/art-info/styled';
 import { CardSize } from '@constants/card-size';
 import { ItemTextStyled } from '@styled/components/typography';
 import { theme } from '@styled/theme';
 
-export const ArtInfo = ({ size = CardSize.BIG, artist_title, is_public_domain, title }) => {
+type ArtInfoPropsType = {
+  size?: CardSize.SMALL | CardSize.BIG | undefined;
+  id: number;
+  title: string;
+  artist: string;
+  domain: 'Public' | 'Private';
+};
+
+export const ArtInfo: FC<ArtInfoPropsType> = ({ size = CardSize.BIG, title, artist, domain }) => {
   const { fontWeight, fontSizes, colors, fonts } = theme;
   const fontFamily = size === CardSize.SMALL ? fonts.main : '';
 
@@ -19,10 +28,10 @@ export const ArtInfo = ({ size = CardSize.BIG, artist_title, is_public_domain, t
         {title}
       </ItemTextStyled>
       <ItemTextStyled $family={fontFamily} color={colors.orange.light}>
-        {artist_title}
+        {artist}
       </ItemTextStyled>
       <ItemTextStyled $family={fontFamily} $weight={fontWeight.bold}>
-        {is_public_domain ? 'Public' : 'Private'}
+        {domain}
       </ItemTextStyled>
     </ArtInfoWrapperStyle>
   );
