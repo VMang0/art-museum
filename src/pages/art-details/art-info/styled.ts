@@ -17,3 +17,7 @@ export const ArtPartInfoWrapperStyled = styled.div`
     margin-bottom: 1.063rem;
   }
 `;
+
+export const ArtSecondPartInfoWrapperStyled = styled(ArtPartInfoWrapperStyled)`
+  margin-top: auto;
+`;

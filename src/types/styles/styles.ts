@@ -11,6 +11,7 @@ type ColorsType = {
   };
   blue: '#2C3144';
   grey: '#393939';
+  red: '#e60000';
   gradient: {
     light: 'rgba(251, 215, 178, 0.3)';
     medium: 'rgba(57, 57, 57, 0.5)';
