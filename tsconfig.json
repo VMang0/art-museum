@@ -18,10 +18,11 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
     "allowJs": true,
-
     "baseUrl": ".",
     "paths": {
+      "src/*": ["src/*"],
       "@public/*": ["./public/*"],
+      "@assets/*": ["./src/assets/*"],
       "@components/*": ["./src/components/*"],
       "@constants/*": ["./src/constants/*"],
       "@hooks/*": ["./src/hooks/*"],
@@ -29,8 +30,8 @@
       "@redux/*": ["./src/redux/*"],
       "@types/*": ["./src/types/*"],
       "@utils/*": ["./src/utils/*"],
+      "@routes/*": ["./src/routes/*"],
       "@styled/*": ["./src/styled/*"],
-      "@assets/*": ["./src/assets/*"]
     }
   },
   "include": ["src"],
