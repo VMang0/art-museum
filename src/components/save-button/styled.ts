@@ -11,7 +11,7 @@ export const SaveButtonStyled = styled.button`
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
-  background-color: ${({ theme, color }) => color || theme.colors.white.light};
+  background-color: ${({ theme, $isFavorite, $color }) => ($isFavorite ? theme.colors.gradient.light : $color)};
   path {
     stroke: ${({ theme }) => theme.colors.orange.bright};
   }
