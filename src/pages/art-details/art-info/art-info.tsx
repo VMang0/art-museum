@@ -1,39 +1,33 @@
+import { FC } from 'react';
+
 import { ItemTextStyled, SubTitleStyled } from '@styled/components/typography';
 import { theme } from '@styled/theme';
+import { FullArtType } from '@types/art';
 
-import { ArtInfoWrapperStyled, ArtPartInfoWrapperStyled } from './styled';
+import { ArtInfoWrapperStyled, ArtPartInfoWrapperStyled, ArtSecondPartInfoWrapperStyled } from './styled';
 
-export const ArtInfo = ({ data }) => {
+export const ArtInfo: FC<{ data: FullArtType }> = ({ data }) => {
   const { fontWeight, fontSizes, colors } = theme;
   const orangeTextColor = colors.orange.light;
-  const {
-    title,
-    date_display,
-    place_of_origin,
-    artist_title,
-    is_public_domain,
-    dimensions,
-    credit_line,
-    gallery_title,
-  } = data;
+  const { title, dates, artist, repository, nationality, credits, dimensions, domain } = data;
 
   return (
     <ArtInfoWrapperStyled>
       <ArtPartInfoWrapperStyled>
         <SubTitleStyled $align="start">{title}</SubTitleStyled>
         <ItemTextStyled color={orangeTextColor} fontSize={fontSizes.s24}>
-          {artist_title}
+          {artist}
         </ItemTextStyled>
         <ItemTextStyled $weight={fontWeight.bold} fontSize={fontSizes.s16}>
-          {date_display}
+          {dates}
         </ItemTextStyled>
       </ArtPartInfoWrapperStyled>
 
-      <ArtPartInfoWrapperStyled>
+      <ArtSecondPartInfoWrapperStyled>
         <SubTitleStyled $align="start">Overview</SubTitleStyled>
         <ItemTextStyled color={orangeTextColor} fontSize={fontSizes.s16}>
           Artist nationality:
-          <ItemTextStyled>{place_of_origin}</ItemTextStyled>
+          <ItemTextStyled>{nationality}</ItemTextStyled>
         </ItemTextStyled>
         <ItemTextStyled color={orangeTextColor} fontSize={fontSizes.s16}>
           Dimensions:
@@ -41,14 +35,14 @@ export const ArtInfo = ({ data }) => {
         </ItemTextStyled>
         <ItemTextStyled color={orangeTextColor} fontSize={fontSizes.s16}>
           Credit Line:
-          <ItemTextStyled>{credit_line}</ItemTextStyled>
+          <ItemTextStyled>{credits}</ItemTextStyled>
         </ItemTextStyled>
         <ItemTextStyled color={orangeTextColor} fontSize={fontSizes.s16}>
           Repository:
-          <ItemTextStyled>{gallery_title || 'No information'}</ItemTextStyled>
+          <ItemTextStyled>{repository}</ItemTextStyled>
         </ItemTextStyled>
-        <ItemTextStyled fontSize={fontSizes.s16}>{is_public_domain ? 'Public' : 'Private'}</ItemTextStyled>
-      </ArtPartInfoWrapperStyled>
+        <ItemTextStyled fontSize={fontSizes.s16}>{domain}</ItemTextStyled>
+      </ArtSecondPartInfoWrapperStyled>
     </ArtInfoWrapperStyled>
   );
 };

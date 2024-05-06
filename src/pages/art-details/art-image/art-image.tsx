@@ -1,20 +1,43 @@
-import { FC } from 'react';
-import NoImageIcon from '@assets/icons/no-image-icon.svg';
-import { CardSize } from '@constants/card-size';
+import { FC, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
-import { ArtNoImageStyled, ArtImageStyled } from './styled';
+import NoImageIcon from '@assets/icons/no-image-icon.svg';
+import { SaveButton } from '@components/save-button';
+import { actionFavorite, favoritesSelector } from '@redux/slices/favoriteSlice';
+import { theme } from '@styled/theme';
+import { ThumbnailType } from '@types/art';
+
+import { ArtNoImageStyled, ArtImageStyled, ImageWrapperStyled, ButtonWrapperStyled } from './styled';
 
 type ArtImagePropsType = {
-  //path?: string;
-  size?: CardSize.BIG | CardSize.SMALL | undefined;
+  imageId: string | undefined;
+  thumbnail: ThumbnailType;
+  id: number;
 };
 
-export const ArtImage: FC<ArtImagePropsType> = ({ path, size }) => {
-  const url = `https://www.artic.edu/iiif/2/${path.imageId}/full/843,/0/default.jpg`;
+export const ArtImage: FC<ArtImagePropsType> = ({ imageId, thumbnail, id }) => {
+  const dispatch = useDispatch();
+  const [isError, setIsError] = useState(false);
+  const url = `https://www.artic.edu/iiif/2/${imageId}/full/843,/0/default.jpg`;
+  const favorites = useSelector(favoritesSelector);
+  const isFavorite = favorites.some((item) => item === id);
+
+  const onAction = (e) => {
+    e.stopPropagation();
+    dispatch(actionFavorite(id));
+  };
+
+  const handleError = () => {
+    setIsError(true);
+  };
+
   return (
-    <>
-      {(!path || !url) && <ArtNoImageStyled src={NoImageIcon} size={size} alt="no image icon" />}
-      {path && <ArtImageStyled src={url || path.thumbnail.lqip} alt={path.thumbnail.alt_text} size={size} />}
-    </>
+    <ImageWrapperStyled>
+      {(!imageId || isError) && <ArtNoImageStyled src={NoImageIcon} alt="no image icon" />}
+      {imageId && !isError && <ArtImageStyled src={url} alt={thumbnail.alt_text} onError={handleError} />}
+      <ButtonWrapperStyled>
+        <SaveButton click={onAction} isFavorite={isFavorite} colorBG={theme.colors.white.primary} />
+      </ButtonWrapperStyled>
+    </ImageWrapperStyled>
   );
 };

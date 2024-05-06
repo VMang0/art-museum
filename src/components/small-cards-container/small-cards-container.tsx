@@ -1,14 +1,15 @@
+import { FC } from 'react';
+
 import { ArtSmallCard } from '@components/art-card/art-small-card';
 import { GridContainerStyled } from '@styled/components/grid';
-import { useGetArtsQuery } from '../../store/api/art-api';
+import { ArtType } from '@types/art';
 
-export const SmallCardsContainer = () => {
-  const { data } = useGetArtsQuery(9);
-  const arts = data?.data;
-
-  return (
-    <GridContainerStyled $gap="16px">
-      {arts && arts.map((item, index) => <ArtSmallCard key={index} art={item} />)}
-    </GridContainerStyled>
-  );
+type SmallCardsContainerPropsType = {
+  data: ArtType[];
 };
+
+export const SmallCardsContainer: FC<SmallCardsContainerPropsType> = ({ data }) => (
+  <GridContainerStyled $gap="1rem">
+    {data && data.map((item, index) => <ArtSmallCard key={index} art={item} />)}
+  </GridContainerStyled>
+);
