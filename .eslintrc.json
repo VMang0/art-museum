@@ -9,8 +9,9 @@
         "plugin:react/recommended",
         "plugin:react-hooks/recommended",
         "plugin:jsx-a11y/recommended",
-        "plugin:import/recommended",
-        "plugin:react/jsx-runtime"
+        "plugin:react/jsx-runtime",
+        "plugin:import/errors",
+        "plugin:import/warnings"
     ],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
@@ -25,12 +26,37 @@
     "rules": {
         "react/prop-types": "off",
         "react/react-in-jsx-scope": "off",
+        "react/display-name": "off",
         "react/jsx-props-no-spreading": "off",
         "@typescript-eslint/no-shadow": "warn",
         "react/require-default-props": "off",
         "react/destructuring-assignment": "off",
-        "import/no-extraneous-dependencies": "warn",
-        "import/extensions": [ "off", { "ignorePackages": true } ],
-        "prettier/prettier": [ "warn", { "endOfLine": "auto" } ]
+        "import/extensions": ["off"],
+        "prettier/prettier": [ "warn", { "endOfLine": "auto" } ],
+        "import/order": [
+            "error",
+            {
+                "groups": [
+                    ["builtin", "external", "internal"]
+                ],
+                "pathGroups": [
+                    {
+                        "pattern": "*react*",
+                        "group": "builtin",
+                        "position": "before"
+                    }
+                ],
+                "pathGroupsExcludedImportTypes": ["react", "react-router-dom", "react-dom/client"],
+                "newlines-between": "ignore",
+                "alphabetize": {
+                    "order": "asc",
+                    "caseInsensitive": true
+                }
+            }
+        ],
+        "import/named": "off",
+        "import/resolver": "off",
+        "import/no-unresolved": "off",
+        "import/no-named-as-default": "off"
     }
 }
