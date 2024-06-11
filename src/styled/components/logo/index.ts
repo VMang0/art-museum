@@ -1,1 +1,1 @@
-export { MuseumLogoStyled, ModsenLogoStyled } from './logo';
+export { MuseumLogoStyled } from './logo';
